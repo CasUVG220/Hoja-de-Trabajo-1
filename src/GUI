@@ -1,0 +1,63 @@
+import javax.swing.*;
+import java.awt.*;
+
+/**
+ * Implementacion grafica de una licuadora utilizando javax.swing.
+ */
+public class BasicBlenderGUI extends BasicBlender {
+
+    /**
+     * Constructor que inicializa la interfaz grafica 
+     */
+    public BasicBlenderGUI() {
+        JFrame frame = new JFrame("Licuadora Basica");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setLayout(new GridLayout(6, 1));
+
+        JLabel statusLabel = new JLabel("Bienvenido a la Licuadora Basica", SwingConstants.CENTER);
+        frame.add(statusLabel);
+
+        JButton fillButton = new JButton("Llenar licuadora");
+        fillButton.addActionListener(e -> {
+            Fill();
+            statusLabel.setText("La licuadora ahora está llena.");
+        });
+        frame.add(fillButton);
+
+        JButton speedUpButton = new JButton("Incrementar velocidad");
+        speedUpButton.addActionListener(e -> {
+            SpeedUp();
+            statusLabel.setText("Velocidad actual: " + GetSpeed());
+        });
+        frame.add(speedUpButton);
+
+        JButton speedDownButton = new JButton("Reducir velocidad");
+        speedDownButton.addActionListener(e -> {
+            SpeedDown();
+            statusLabel.setText("Velocidad actual: " + GetSpeed());
+        });
+        frame.add(speedDownButton);
+
+        JButton checkSpeedButton = new JButton("Consultar velocidad");
+        checkSpeedButton.addActionListener(e -> {
+            statusLabel.setText("Velocidad actual: " + GetSpeed());
+        });
+        frame.add(checkSpeedButton);
+
+        JButton emptyButton = new JButton("Vaciar licuadora");
+        emptyButton.addActionListener(e -> {
+            Empty();
+            statusLabel.setText("La licuadora ha sido vaciada.");
+        });
+        frame.add(emptyButton);
+
+        frame.setVisible(true);
+    }
+/**
+     * Metodo main para iniciar la interfaz grafica.
+     */
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(BasicBlenderGUI::new);
+    }
+}
