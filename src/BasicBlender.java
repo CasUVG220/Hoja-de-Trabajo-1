@@ -1,10 +1,15 @@
 import java.util.Scanner;
-
+/*
+Implementacion basica de una licuadora que usa IBlender.
+*/  
 public class BasicBlender implements IBlender {
 
     private int speed; // Velocidad actual de la licuadora
     private boolean isFull; // Indica si la licuadora está llena
-
+/*
+Constructor de la base BasicBlender 
+Inicializa la licuadora en estado apagado y vacia
+*/
     public BasicBlender() {
         this.speed = 0; // Inicialmente apagada
         this.isFull = false; // Inicialmente vacía
@@ -70,7 +75,9 @@ public class BasicBlender implements IBlender {
     public int GetSpeed() {
         return speed;
     }
-
+/*
+Metodo principal para interactuar con la licuadora desde la termianl
+*/
     public static void main(String[] args) {
         BasicBlender blender = new BasicBlender();
         Scanner scanner = new Scanner(System.in);
